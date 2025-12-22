@@ -46,7 +46,7 @@ Har du kendskab til et dansk tech-system, der mangler på listen? Følg disse tr
    ```bash
    git checkout -b tilfoej-produkt-navn
    ```
-4. **Tilføj produktet** i `index.html`:
+4. **Tilføj produktet** i `index.php`:
    - Find sektionen med produkterne (søg efter `id="produkter"`)
    - **VIGTIGT**: Tilføj det nye produkt **efter** de eksisterende produkter (ikke først i listen)
    - Tilføj et nyt `<li>` element efter samme struktur som eksisterende produkter
@@ -65,17 +65,74 @@ Har du kendskab til et dansk tech-system, der mangler på listen? Følg disse tr
    - Hvorfor det er relevant
    - Link til produktets hjemmeside
 
-### 2. Forbedre eksisterende indhold
+### 2. Tilføj dit produkt til community-listen
+
+Har du et dansk produkt, der opfylder kriterierne, men som ikke skal have et billede? Tilføj det til `community-products.json` via en pull request:
+
+1. **Fork dette repository** (klik på "Fork" øverst til højre på GitHub)
+2. **Clone din fork** til din computer:
+   ```bash
+   git clone https://github.com/DIT-BRUGERNAVN/dansk-tech.git
+   cd dansk-tech
+   ```
+3. **Opret en ny branch**:
+   ```bash
+   git checkout -b tilfoej-community-produkt
+   ```
+4. **Rediger `community-products.json`**:
+   - Åbn filen i din editor
+   - Tilføj dit produkt til arrayet (efter de eksisterende produkter)
+   - Følg denne struktur:
+   ```json
+   {
+     "name": "DitProdukt.dk",
+     "url": "https://ditprodukt.dk",
+     "description": "Kort beskrivelse af hvad produktet gør",
+     "alternatives": ["Internationalt Produkt 1", "Internationalt Produkt 2", "Internationalt Produkt 3"]
+   }
+   ```
+   - **Vigtigt:** `alternatives` skal være en array (med firkantede parenteser) med op til 3 internationale produkter
+   - Sørg for at JSON filen er gyldig (brug en JSON validator hvis du er i tvivl)
+   - Husk komma efter hvert produkt (undtagen det sidste)
+
+5. **Commit og push**:
+   ```bash
+   git add community-products.json
+   git commit -m "Tilføj [Produktnavn] til community-listen"
+   git push origin tilfoej-community-produkt
+   ```
+
+6. **Opret en Pull Request** på GitHub:
+   - Gå til dit forked repository på GitHub
+   - Klik på "Compare & pull request"
+   - Udfyld beskrivelsen med information om produktet
+   - Submit pull request
+
+**Eksempel på et reelt produkt i JSON filen:**
+```json
+{
+  "name": "Ubivox.dk",
+  "url": "https://ubivox.dk/",
+  "description": "Send nyhedsbreve nemt og sikkert",
+  "alternatives": ["MailChimp", "Campaign Monitor", "Klaviyo"]
+}
+```
+
+**Forskellen mellem primære produkter og community produkter:**
+- **Primære produkter** (i `index.php`): Har billeder, er "frosset" og kræver direkte redigering af HTML
+- **Community produkter** (i `community-products.json`): Uden billeder, nemt at tilføje via JSON, vises automatisk på siden
+
+### 3. Forbedre eksisterende indhold
 
 - Ret fejl eller forbedre beskrivelser
 - Tilføj manglende information
 - Forbedre SEO eller tekniske aspekter
 
-### 3. Rapporter problemer
+### 4. Rapporter problemer
 
 Har du fundet en fejl eller har du en idé til forbedringer? Opret et [Issue](https://github.com/DIT-BRUGERNAVN/dansk-tech/issues) på GitHub.
 
-### 4. Del projektet
+### 5. Del projektet
 
 Hjælp med at sprede budskabet:
 - Del på sociale medier
@@ -152,7 +209,7 @@ Når du tilføjer et produkt, skal du inkludere:
    cd dansk-tech
    ```
 
-2. Åbn `index.html` i din browser eller brug en lokal server:
+2. Åbn `index.php` i din browser eller brug en lokal server (kræver PHP):
    ```bash
    # Med Python
    python3 -m http.server 8000
@@ -167,18 +224,19 @@ Når du tilføjer et produkt, skal du inkludere:
 
 ```
 dansk-tech/
-├── index.html          # Hovedside
-├── robots.txt          # SEO robots fil
-├── sitemap.xml         # SEO sitemap
-├── favicon.svg         # Favicon
-├── favicon.ico         # Favicon (ICO format)
-├── apple-touch-icon.*  # Apple Touch Icons
-├── og-image-*.png      # Open Graph billede
-├── images/             # Billeder mappe
-│   ├── *.png           # Produktbilleder
-│   ├── *.jpg           # Personbilleder og andre
-│   └── *.webp          # WebP billeder
-└── README.md           # Denne fil
+├── index.php                    # Hovedside (PHP)
+├── community-products.json      # Community produkter (JSON)
+├── robots.txt                   # SEO robots fil
+├── sitemap.xml                  # SEO sitemap
+├── favicon.svg                  # Favicon
+├── favicon.ico                  # Favicon (ICO format)
+├── apple-touch-icon.*           # Apple Touch Icons
+├── og-image-*.png               # Open Graph billede
+├── images/                      # Billeder mappe
+│   ├── *.png                    # Produktbilleder
+│   ├── *.jpg                    # Personbilleder og andre
+│   └── *.webp                   # WebP billeder
+└── README.md                    # Denne fil
 ```
 
 ---

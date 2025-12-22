@@ -534,13 +534,81 @@
       </ul>
     </div>
   </div>
+
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="border-t border-gray-300 dark:border-white/15"></div>
+  </div>
+
+  <?php
+  // Load community products from JSON file
+  $communityProducts = [];
+  $jsonFile = __DIR__ . '/community-products.json';
+  
+  if (file_exists($jsonFile)) {
+    $jsonContent = file_get_contents($jsonFile);
+    $decoded = json_decode($jsonContent, true);
+    
+    if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+      $communityProducts = $decoded;
+    }
+  }
+  
+  // Only show section if there are products
+  if (!empty($communityProducts)):
+  ?>
+  <div class="bg-white py-24 sm:py-32 dark:bg-gray-900">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Software fra eksterne bidragydere</h2>
+        <p class="mt-6 text-lg/8 text-gray-600 dark:text-gray-400">
+          Følgende produkter er tilføjet af eksterne bidragydere. Vil du tilføje dit produkt? Send en <a href="#forslag" class="text-gray-900 underline dark:text-white hover:text-gray-700 dark:hover:text-gray-300">pull request til os via GitHub</a>. Vi synes det er den rigtige måde at gøre det, når nu det er en tech-stack vi arbejder med.
+        </p>
+      </div>
+      <ul role="list" class="mx-auto mt-20 grid max-w-4xl grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <?php foreach ($communityProducts as $product): 
+          // Validate required fields
+          if (!isset($product['name']) || !isset($product['url']) || !isset($product['description'])) {
+            continue;
+          }
+          
+          $name = htmlspecialchars($product['name'], ENT_QUOTES, 'UTF-8');
+          $url = htmlspecialchars($product['url'], ENT_QUOTES, 'UTF-8');
+          $description = htmlspecialchars($product['description'], ENT_QUOTES, 'UTF-8');
+          $alternatives = isset($product['alternatives']) && is_array($product['alternatives']) 
+            ? array_slice($product['alternatives'], 0, 3) 
+            : [];
+          $alternativesText = !empty($alternatives) ? 'Alternativ til: ' . implode(', ', array_map('htmlspecialchars', $alternatives)) : '';
+        ?>
+        <li>
+          <a href="<?php echo $url; ?>" target="_blank" rel="noopener noreferrer" class="group block">
+            <div class="rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 shadow-lg shadow-gray-200/50 dark:shadow-gray-900/50 group-hover:shadow-xl group-hover:shadow-gray-300/50 dark:group-hover:shadow-gray-800/50 transition-all duration-300 p-6">
+              <h3 class="text-lg/8 font-semibold tracking-tight text-gray-900 dark:text-white group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">
+                <?php echo $name; ?>
+              </h3>
+              <p class="mt-3 text-base/7 text-gray-600 dark:text-gray-400">
+                <?php echo $description; ?>
+              </p>
+              <?php if (!empty($alternativesText)): ?>
+              <p class="mt-3 text-xs text-gray-400 dark:text-gray-600">
+                <?php echo $alternativesText; ?>
+              </p>
+              <?php endif; ?>
+            </div>
+          </a>
+        </li>
+        <?php endforeach; ?>
+      </ul>
+    </div>
+  </div>
+  <?php endif; ?>
+
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div class="border-t border-gray-300 dark:border-white/15"></div>
   </div>
   <div id="iværksættere" class="bg-white py-24 sm:py-32 dark:bg-gray-900">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl dark:text-white">Iværksættere, chefer og investorer</h2>
+        <h2 class="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl dark:text-white">Tusind tak til dem der støttede projektet helt fra start</h2>
         <p class="mt-6 text-lg/8 text-gray-600 dark:text-gray-400">Vi har talt med bekendte i tech-miljøet og fået dem med til også at lægge navn til anbefalingerne. Disse personer støtter initiativet og bygger og investerer selv i de danske systemer.</p>
       </div>
       <ul role="list" class="mx-auto mt-20 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-16 text-center sm:grid-cols-3 md:grid-cols-4 lg:mx-0 lg:max-w-none lg:grid-cols-7">
@@ -624,7 +692,7 @@
   <div class="bg-white py-24 sm:py-32 dark:bg-gray-900">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl dark:text-white">De tre bagmænd</h2>
+        <h2 class="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl dark:text-white">De tre oprindelige bagmænd</h2>
         <p class="mt-6 text-lg/8 text-gray-600 dark:text-gray-400">Vi er tre glade iværksættere fra Danmark som elsker tech, business og at bygge virksomheder. Vi har fulgt debatten omkring at Danmark måske "falder bagud" internationalt og vi er nok desværre enige. Derfor vil vi gerne prøve at kaste lidt lys på danske tech-firmaer som vi mener er gode alternativer til de store internationale spillere, når man som software-virksmohed leder efter produkter til sin stack.</p>
       </div>
       <ul role="list" class="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 text-center sm:grid-cols-3 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:justify-items-center">
@@ -679,12 +747,12 @@
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div class="border-t border-gray-300 dark:border-white/15"></div>
   </div>
-  <div class="bg-white py-24 sm:py-32 dark:bg-gray-900">
+  <div id="forslag"class="bg-white py-24 sm:py-32 dark:bg-gray-900">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-2xl text-center">
-        <h2 class="text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Bidrag på <a href="https://github.com/Boligforeningsweb/dansk-tech" class="underline">Github</a></h2>
+        <h2 class="text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Send dit forslag via <a href="https://github.com/Boligforeningsweb/dansk-tech" class="underline">GitHub</a></h2>
         <p class="mt-6 text-lg/8 text-gray-600 dark:text-gray-400">
-          Er du selv udvikler og har lyst til at bidrage, så er du mere end velkommen til at oprette en pull request og bliv contributor her på siden.
+          Er du selv udvikler og kender lige præcis dét stykke software fra Danmark som mangler på listen? Så kan du sende os en pull request og foreslå til listen af produkter fra eksterne bidragydere. Herunder kan du se dem der har bidraget indtil videre.
         </p>
         <div id="contributors" class="mt-10 flex items-center justify-center gap-x-4">
         </div>
