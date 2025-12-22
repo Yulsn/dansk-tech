@@ -30,55 +30,29 @@ Initiativet er startet af en gruppe danske iværksættere, chefer og investorer,
 
 ## 🤝 Hvordan bidrager du?
 
-Vi er glade for bidrag! Der er flere måder at hjælpe på:
+Vi er glade for bidrag! 
 
-### 1. Tilføj et nyt produkt
+**Vigtigt:** Som ekstern bidragyder skal du kun tilføje produkter til listen **"Software fra eksterne bidragydere"**, som vises på siden. Dette gøres ved at redigere filen `community-products.json`.
 
-Har du kendskab til et dansk tech-system, der mangler på listen? Følg disse trin:
+Du skal **ikke** redigere `index.php` eller tilføje billeder - det håndteres internt af projektet.
 
-1. **Fork dette repository** (klik på "Fork" øverst til højre)
+### Tilføj et produkt til listen
+
+Følg disse trin for at tilføje et dansk tech-produkt:
+
+1. **Fork dette repository** (klik på "Fork" øverst til højre på GitHub)
+
 2. **Clone din fork** til din computer:
    ```bash
    git clone https://github.com/DIT-BRUGERNAVN/dansk-tech.git
    cd dansk-tech
    ```
+
 3. **Opret en ny branch**:
    ```bash
    git checkout -b tilfoej-produkt-navn
    ```
-4. **Tilføj produktet** i `index.php`:
-   - Find sektionen med produkterne (søg efter `id="produkter"`)
-   - **VIGTIGT**: Tilføj det nye produkt **efter** de eksisterende produkter (ikke først i listen)
-   - Tilføj et nyt `<li>` element efter samme struktur som eksisterende produkter
-   - Tilføj produktets billede i `images/` mappen (400x400px, PNG format)
-   - Opdater også Schema.org JSON-LD sektionen i `<head>` hvis muligt
 
-5. **Commit og push**:
-   ```bash
-   git add .
-   git commit -m "Tilføj [Produktnavn]"
-   git push origin tilfoej-produkt-navn
-   ```
-
-6. **Opret en Pull Request** på GitHub med:
-   - En beskrivelse af produktet
-   - Hvorfor det er relevant
-   - Link til produktets hjemmeside
-
-### 2. Tilføj dit produkt til community-listen
-
-Har du et dansk produkt, der opfylder kriterierne, men som ikke skal have et billede? Tilføj det til `community-products.json` via en pull request:
-
-1. **Fork dette repository** (klik på "Fork" øverst til højre på GitHub)
-2. **Clone din fork** til din computer:
-   ```bash
-   git clone https://github.com/DIT-BRUGERNAVN/dansk-tech.git
-   cd dansk-tech
-   ```
-3. **Opret en ny branch**:
-   ```bash
-   git checkout -b tilfoej-community-produkt
-   ```
 4. **Rediger `community-products.json`**:
    - Åbn filen i din editor
    - Tilføj dit produkt til arrayet (efter de eksisterende produkter)
@@ -98,8 +72,8 @@ Har du et dansk produkt, der opfylder kriterierne, men som ikke skal have et bil
 5. **Commit og push**:
    ```bash
    git add community-products.json
-   git commit -m "Tilføj [Produktnavn] til community-listen"
-   git push origin tilfoej-community-produkt
+   git commit -m "Tilføj [Produktnavn]"
+   git push origin tilfoej-produkt-navn
    ```
 
 6. **Opret en Pull Request** på GitHub:
@@ -118,26 +92,7 @@ Har du et dansk produkt, der opfylder kriterierne, men som ikke skal have et bil
 }
 ```
 
-**Forskellen mellem primære produkter og community produkter:**
-- **Primære produkter** (i `index.php`): Har billeder, er "frosset" og kræver direkte redigering af HTML
-- **Community produkter** (i `community-products.json`): Uden billeder, nemt at tilføje via JSON, vises automatisk på siden
-
-### 3. Forbedre eksisterende indhold
-
-- Ret fejl eller forbedre beskrivelser
-- Tilføj manglende information
-- Forbedre SEO eller tekniske aspekter
-
-### 4. Rapporter problemer
-
-Har du fundet en fejl eller har du en idé til forbedringer? Opret et [Issue](https://github.com/DIT-BRUGERNAVN/dansk-tech/issues) på GitHub.
-
-### 5. Del projektet
-
-Hjælp med at sprede budskabet:
-- Del på sociale medier
-- Nævn det i relevante fora eller communities
-- Fortæl kolleger og bekendte om projektet
+**Vigtigt:** Produkter tilføjet via `community-products.json` vises automatisk i sektionen "Software fra eksterne bidragydere" på siden.
 
 ---
 
@@ -158,86 +113,20 @@ For at et produkt kan inkluderes, skal det opfylde følgende:
 
 ### Produktinformation
 
-Når du tilføjer et produkt, skal du inkludere:
+Når du tilføjer et produkt til `community-products.json`, skal du inkludere:
 
-- **Navn**: Produktets fulde navn (inkl. domæne, f.eks. "Alunta.com")
-- **Beskrivelse**: Kort beskrivelse af hvad produktet gør (1-2 sætninger)
-- **Alternativer**: Hvilke internationale systemer det er alternativ til
-- **Billede**: Et screenshot eller logo (400x400px, PNG format)
-- **Link**: URL til produktets hjemmeside
-
-### Eksempel på produktstruktur
-
-```html
-<li>
-  <a href="https://produkt.dk" target="_blank" rel="noopener noreferrer" class="group block">
-    <div class="relative">
-      <div class="absolute -inset-4 rounded-3xl bg-gradient-to-br from-orange-50 via-orange-100/50 to-amber-50 opacity-0 group-hover:opacity-100 dark:from-orange-900/20 dark:via-orange-800/10 dark:to-amber-900/20 transition-opacity duration-300 blur-xl"></div>
-      <div class="relative rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 shadow-lg shadow-gray-200/50 dark:shadow-gray-900/50 group-hover:shadow-xl group-hover:shadow-gray-300/50 dark:group-hover:shadow-gray-800/50 transition-all duration-300">
-        <img src="images/produkt.png" alt="Produktnavn" width="400" height="400" loading="lazy" class="aspect-square w-full rounded-2xl object-cover transition-all duration-300" />
-      </div>
-    </div>
-    <h3 class="mt-6 text-lg/8 font-semibold tracking-tight text-gray-900 dark:text-white group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">
-      Produkt.dk
-    </h3>
-    <p class="text-base/7 text-gray-600 dark:text-gray-400">
-      Kort beskrivelse af produktet
-    </p>
-    <p class="mt-2 text-xs text-gray-400 dark:text-gray-600">
-      Alternativ til: Internationalt produkt 1, Internationalt produkt 2
-    </p>
-  </a>
-</li>
-```
+- **name**: Produktets fulde navn (inkl. domæne, f.eks. "Alunta.com")
+- **url**: URL til produktets hjemmeside
+- **description**: Kort beskrivelse af hvad produktet gør (1-2 sætninger)
+- **alternatives**: Array med op til 3 internationale produkter, som det danske produkt er alternativ til
 
 ---
 
-## 🛠️ Teknisk information
+## 📝 Filstruktur for bidragydere
 
-### Tech stack
+Som bidragyder skal du kun redigere én fil:
 
-- **HTML5**: Semantisk markup
-- **Tailwind CSS**: Styling via CDN
-- **Vanilla JavaScript**: Minimal JavaScript for interaktivitet
-- **Static hosting**: Kan hostes på GitHub Pages, Netlify, Vercel eller lignende
-
-### Lokal udvikling
-
-1. Clone repositoryet:
-   ```bash
-   git clone https://github.com/DIT-BRUGERNAVN/dansk-tech.git
-   cd dansk-tech
-   ```
-
-2. Åbn `index.php` i din browser eller brug en lokal server (kræver PHP):
-   ```bash
-   # Med Python
-   python3 -m http.server 8000
-   
-   # Med Node.js (http-server)
-   npx http-server
-   ```
-
-3. Åbn `http://localhost:8000` i din browser
-
-### Filstruktur
-
-```
-dansk-tech/
-├── index.php                    # Hovedside (PHP)
-├── community-products.json      # Community produkter (JSON)
-├── robots.txt                   # SEO robots fil
-├── sitemap.xml                  # SEO sitemap
-├── favicon.svg                  # Favicon
-├── favicon.ico                  # Favicon (ICO format)
-├── apple-touch-icon.*           # Apple Touch Icons
-├── og-image-*.png               # Open Graph billede
-├── images/                      # Billeder mappe
-│   ├── *.png                    # Produktbilleder
-│   ├── *.jpg                    # Personbilleder og andre
-│   └── *.webp                   # WebP billeder
-└── README.md                    # Denne fil
-```
+- **`community-products.json`** - Tilføj dit produkt her. Produkter i denne fil vises automatisk i sektionen "Software fra eksterne bidragydere" på siden.
 
 ---
 
