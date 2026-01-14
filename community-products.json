@@ -14,7 +14,7 @@
     "url": "https://www.fmcgsolutions.dk",
     "description": "PIM-system til stamdata med syndikering til GS1, Tradesolution EPD, Dabas og Matinfo samt andre systemer internt og eksternt",
     "alternatives": [
-      "GS1Trade Sync",
+      "GS1",
       "Syndigo",
       "Inriver"
     ]
@@ -55,6 +55,16 @@
     "description": "Ziik nytænker intranettet, med en all-in-one kommunikations- og informationdelingsplatform, der sikrer bedre engagement for medarbejdere",
     "alternatives": [
       "Sharepoint"
+    ]
+  },
+  {
+    "name": "WebContent",
+    "url": "https://webcontent.app",
+    "description": "WebContent er en platform til at søge, skabe, og udføre alt indenfor UGC ads.",
+    "alternatives": [
+      "Influee",
+      "Billo",
+      "Insense"
     ]
   },
   {
