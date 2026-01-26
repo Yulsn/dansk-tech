@@ -453,5 +453,29 @@
          "Meeting Room 365",
          "Envoy"
       ]
+   },
+   {
+  "name": "Klubmodul",
+  "url": "https://klubmodul.dk/",
+  "description": "Medlems- og klubadministration til foreninger med kontingentopkrævning, hold/aktiviteter, tilmelding, kommunikation og klubwebsite samlet i én løsning.",
+  "alternatives": [
+    "Holdsport",
+    "SportMember",
+    "Clubdesk",
+    "Spond",
+    "Conventus"
+  ]
+   },
+   {
+  "name": "Effihub",
+  "url": "https://effihub.com/",
+  "description": "PSA til bureauer og konsulenthuse med tidsregistrering, projekt- og ressourceplanlægning, klippekort/retainers, fakturering og rapportering på tværs af kunder og opgaver.",
+  "alternatives": [
+    "TimeLog",
+    "Productive",
+    "Teamwork",
+    "Kantata",
+    "Harvest"
+  ]
    }
 ]
