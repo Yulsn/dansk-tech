@@ -455,6 +455,29 @@
       ]
    },
    {
+  "name": "Klubmodul",
+  "url": "https://klubmodul.dk/",
+  "description": "Medlems- og klubadministration til foreninger med kontingentopkrævning, hold/aktiviteter, tilmelding, kommunikation og klubwebsite samlet i én løsning.",
+  "alternatives": [
+    "TeamSnap",
+    "WildApricot",
+    "ClubExpress",
+    "MemberPlanet",
+    "SportEasy"
+  ]
+},
+{
+  "name": "Effihub",
+  "url": "https://effihub.com/",
+  "description": "PSA til bureauer og konsulenthuse med tidsregistrering, projekt- og ressourceplanlægning, klippekort/retainers, fakturering og rapportering på tværs af kunder og opgaver.",
+  "alternatives": [
+    "Kantata",
+    "Scoro",
+    "Accelo",
+    "Productive",
+    "Wrike"
+  ]
+},{
     "name": "Keen",
     "url": "https://www.keenpartner.com",
     "description": "PRM Software til styring og skalering af lead-genererende B2B partnerskaber.",
